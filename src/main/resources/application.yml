@@ -1,0 +1,19 @@
+server:
+  port: ${PORT}
+
+spring:
+  application:
+    name: restaurant-reserve-pro
+  datasource:
+    url: jdbc:postgresql://localhost:5432/restaurant-reserve
+    username: ${USERNAME}
+    password: ${PASSWORD}
+    driver-class-name: org.postgresql.Driver
+    jpa:
+      show-sql: true
+      hibernate:
+        ddl-auto: update
+      properties:
+        hibernate:
+          dialect: org.hibernate.dialect.PostgreSQLDialect
+
