@@ -5,7 +5,7 @@ spring:
   application:
     name: restaurant-reserve-pro
   datasource:
-    url: jdbc:postgresql://localhost:5432/restaurant-reserve
+    url: jdbc:postgresql://localhost:${PORT_BD}/restaurant-reserve
     username: ${USERNAME}
     password: ${PASSWORD}
     driver-class-name: org.postgresql.Driver
@@ -17,3 +17,8 @@ spring:
         hibernate:
           dialect: org.hibernate.dialect.PostgreSQLDialect
 
+# Configuración de las propiedades del JWT
+app:
+  jwt:
+    secret: "mysecretkey123456"   # Cambia por una clave segura
+    expiration: 86400000  # Expiración del token en milisegundos (24 horas

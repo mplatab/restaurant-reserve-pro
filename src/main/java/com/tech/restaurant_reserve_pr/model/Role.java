@@ -1,11 +1,15 @@
 package com.tech.restaurant_reserve_pr.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -14,14 +18,16 @@ import lombok.Setter;
 @Entity
 @Table(name = "roles")
 public class Role {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Enumerated(EnumType.STRING)
-    private ERole name;
+    private String nombre;
+    private String descripcion;
 
-    @Size(max = 100)
-    private String description;
+    @ManyToMany(mappedBy = "roles")
+    @JsonIgnore
+    private Set<User> users = new HashSet<>();
 
 }
